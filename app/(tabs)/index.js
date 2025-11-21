@@ -1,8 +1,16 @@
-import { StyleSheet, Text, View } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  FlatList,
+  TouchableOpacity,
+  ActivityIndicator,
+  Plata,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Product from "../../components/Product";
-const index = () => {
-  const NaninaText = "inicial";
+
+const Home = () => {
   return (
     <SafeAreaView style={styles.container}>
       <Text>{NaninaText}</Text>
@@ -10,7 +18,7 @@ const index = () => {
   );
 };
 
-export default index;
+export default Home;
 
 const styles = StyleSheet.create({
   container: {

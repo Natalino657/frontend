@@ -1,5 +1,4 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
-import React from "react";
 import { Link } from "expo-router";
 import Rating from "./Rating";
 import { Colors } from "../constants/Utils";

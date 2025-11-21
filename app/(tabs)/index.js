@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-
+import Product from "../../components/Product";
 const index = () => {
   const NaninaText = "inicial";
   return (

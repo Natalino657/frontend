@@ -30,6 +30,7 @@ const Home = () => {
   });
   console.log("keyword:", keyword);
   console.log("pageNumber:", pageNumber);
+  //console.log(data.products);
   useEffect(() => {
     refetch();
   }, [keyword, pageNumber, refetch]);

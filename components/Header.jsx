@@ -18,21 +18,21 @@ const Header = () => {
 
   const navigation = useNavigation();
   const router = useRouter();
-  const { Keyword = "" } = useLocalSearchParams();
+  const { keyword = "" } = useLocalSearchParams();
 
   const HandleSearch = useCallback(() => {
     if (searchText.trim().length >= 2 || searchText.trim().length === 0) {
       router.setParams({
-        Keyword: searchText.trim(),
+        keyword: searchText.trim(),
         pageNumber: "1",
       });
     }
   }, [searchText, router]);
 
   const clearSearch = () => {
-    searchText("");
+    setSearchText("");
     router.setParams({
-      Keyword: searchText.trim(),
+      keyword: searchText.trim(),
       pageNumber: "1",
     });
   };
@@ -40,7 +40,7 @@ const Header = () => {
   const showAllProducts = () => {
     setSearchText("");
     router.setParams({
-      Keyword: "",
+      keyword: "",
       pageNumber: "1",
     });
   };
@@ -69,7 +69,7 @@ const Header = () => {
             style={styles.searchInput}
             placeholder="search Products..."
             value={searchText}
-            onChange={setSearchText}
+            onChangeText={setSearchText}
             placeholderTextColor={Colors.lightGray}
             returnKeyLabel="search"
             onSubmitEditing={HandleSearch}
@@ -86,10 +86,10 @@ const Header = () => {
           </TouchableOpacity>
         )}
       </View>
-      {Keyword && (
+      {keyword && (
         <View style={styles.activeFilterRow}>
           <Text style={styles.filterText}>
-            Showing result for : "{Keyword}"
+            Showing result for : "{keyword}"
           </Text>
           <TouchableOpacity
             style={styles.showAllButton}

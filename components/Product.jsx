@@ -42,7 +42,7 @@ const Product = ({ product }) => {
             numberOfLines={1}
             ellipsizeMode="tail"
           >
-            {Product.name}
+            {product.name}
           </Text>
 
           <View style={styles.pricing}>

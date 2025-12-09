@@ -17,6 +17,7 @@ import { Colors } from "../../constants/Utils";
 import { router } from "expo-router";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import ProductImageCard from "../../components/ProductImageCard";
+import ProductDetailsCard from "../../components/ProductDetailsCard";
 
 const ProductScreen = () => {
   const route = useRoute();
@@ -100,6 +101,7 @@ const ProductScreen = () => {
           <Ionicons name="arrow-back-circle" size={40} color={Colors.primary} />
         </TouchableOpacity>
         <ProductImageCard imageUrl={product.image} />
+        <ProductDetailsCard product={product} qty={qty} setQty={setQty} />
       </ScrollView>
     </SafeAreaView>
   );

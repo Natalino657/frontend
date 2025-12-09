@@ -2,12 +2,46 @@ import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import Rating from "./Rating";
+import { Colors } from "../constants/Utils";
 import React from "react";
 
-const ProductDetailsCard = () => {
+const ProductDetailsCard = ({ product, qty, setQty }) => {
+  if (!product) {
+    return null;
+  }
   return (
-    <View>
-      <Text>ProductDetailsCard</Text>
+    <View style={styles.detailsCard}>
+      <Text style={styles.productName}>{product.name}</Text>
+
+      <View style={styles.ratingPriceRow}>
+        <Text style={styles.priceValue}>${product.price}</Text>
+        <Rating value={product.rating} text={`${product.numReviews}`} />
+      </View>
+
+      <View style={styles.divider} />
+
+      <Text style={styles.description}>{product.description}</Text>
+
+      <View style={styles.statusQuantityCart}>
+        <View style={styles.statusContainer}>
+          <Text style={styles.label}>Status</Text>
+
+          <Text
+            style={[
+              styles.statusText,
+              product.countInStock > 0 ? styles.inStock : styles.outOfStock,
+            ]}
+          >
+            {product.countInStock > 0 ? "in stock" : "out of stock"}
+          </Text>
+        </View>
+
+        {product.countInStock > 0 && (
+          <View style={styles.quatityContainer}>
+            <Text></Text>
+          </View>
+        )}
+      </View>
     </View>
   );
 };

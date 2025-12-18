@@ -7,7 +7,6 @@ import {
   TextInput,
 } from "react-native";
 import React, { useState, useCallback } from "react";
-
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { Colors } from "../constants/Utils";
 import { useRouter, useLocalSearchParams, useNavigation } from "expo-router";
@@ -15,6 +14,8 @@ import { useSelector } from "react-redux";
 
 const Header = () => {
   const [searchText, setSearchText] = useState("");
+
+  const { cartItems } = useSelector((state) => state.cart);
 
   const navigation = useNavigation();
   const router = useRouter();
@@ -52,8 +53,19 @@ const Header = () => {
           source={require("../assets/images/logo.png")}
           style={styles.logo}
         />
-        <TouchableOpacity onPress={() => {}} style={styles.cartIconContainer}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate("(screens)/Cart")}
+          style={styles.cartIconContainer}
+        >
           <Ionicons name="cart" size={35} color={Colors.primary} />
+
+          {cartItems.length > 0 && (
+            <View style={styles.cartBadge}>
+              <Text style={styles.cartBadgeText}>
+                {cartItems.reduce((acc, item) => acc + item.qty, 0)}
+              </Text>
+            </View>
+          )}
         </TouchableOpacity>
       </View>
 

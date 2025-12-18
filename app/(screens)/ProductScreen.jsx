@@ -14,6 +14,8 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 import { useGetProductsDetailsQuery } from "../../Slices/productsApiSlice";
 import Message from "../../components/Message";
 import { Colors } from "../../constants/Utils";
+import { useSelector, useDispatch } from "react-redux";
+import { addToCart } from "../../Slices/CartSlice";
 import { router } from "expo-router";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import ProductImageCard from "../../components/ProductImageCard";
@@ -23,6 +25,7 @@ const ProductScreen = () => {
   const route = useRoute();
 
   const navigation = useNavigation();
+  const dispatch = useDispatch();
 
   const { productId } = route.params;
 
@@ -91,6 +94,23 @@ const ProductScreen = () => {
     );
   }
 
+  const handleAddToCart = () => {
+    if (product) {
+      dispatch(addToCart({ ...product, qty }));
+      navigation.navigate("(screen)/Cart");
+    } else {
+      Toast.show({
+        type: "error",
+        text1: "Error",
+        text2: "Product data not loaded yet. Cannot add to cart",
+        position: "top",
+        visibilityTime: 7000,
+      });
+    }
+  };
+
+  const disableAddToCart = product?.countInStock === 0;
+
   return (
     <SafeAreaView style={styles.safeArea}>
       <ScrollView contentContainerStyle={styles.container}>
@@ -101,7 +121,13 @@ const ProductScreen = () => {
           <Ionicons name="arrow-back-circle" size={40} color={Colors.primary} />
         </TouchableOpacity>
         <ProductImageCard imageUrl={product.image} />
-        <ProductDetailsCard product={product} qty={qty} setQty={setQty} />
+        <ProductDetailsCard
+          product={product}
+          qty={qty}
+          setQty={setQty}
+          handleAddToCart={handleAddToCart}
+          disableAddToCart={disableAddToCart}
+        />
       </ScrollView>
     </SafeAreaView>
   );

@@ -97,7 +97,7 @@ const ProductScreen = () => {
   const handleAddToCart = () => {
     if (product) {
       dispatch(addToCart({ ...product, qty }));
-      navigation.navigate("(screen)/Cart");
+      navigation.navigate("(screens)/Cart");
     } else {
       Toast.show({
         type: "error",

@@ -14,6 +14,8 @@ const ProductImageCard = ({ imageUrl }) => {
     return fullUrl;
   };
 
+  console.log("Image URL:", getImageUrl(product.image));
+
   return (
     <View style={styles.imageCard}>
       <Image
@@ -21,7 +23,7 @@ const ProductImageCard = ({ imageUrl }) => {
         style={styles.productImage}
         resizeMode="contain"
         onError={(e) => {
-          console.log("product image card error"), e.nativeEvent.error;
+          (console.log("product image card error"), e.nativeEvent.error);
         }}
         onLoad={() => console.log("image loaded successfully")}
       />

@@ -13,6 +13,7 @@ const Product = ({ product }) => {
     const fullUrl = `${BASE_URL}${imagePath}`;
     return fullUrl;
   };
+  console.log("Image URL:", getImageUrl(product.image));
 
   return (
     <Link
@@ -31,7 +32,7 @@ const Product = ({ product }) => {
               console.error("Product - image load error:", e.nativeEvent.error);
               console.error(
                 "Product - Failed URL:",
-                getImageUrl(product.image)
+                getImageUrl(product.image),
               );
             }}
           />

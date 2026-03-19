@@ -14,8 +14,6 @@ const ProductImageCard = ({ imageUrl }) => {
     return fullUrl;
   };
 
-  console.log("Image URL:", getImageUrl(product.image));
-
   return (
     <View style={styles.imageCard}>
       <Image

@@ -13,7 +13,7 @@ const Product = ({ product }) => {
     const fullUrl = `${BASE_URL}${imagePath}`;
     return fullUrl;
   };
-  console.log("Image URL:", getImageUrl(product.image));
+  // console.log("Image URL:", getImageUrl(product.image));
 
   return (
     <Link

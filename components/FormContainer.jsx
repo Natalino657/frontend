@@ -16,15 +16,15 @@ const FormContainer = ({ children }) => {
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
-      styles={styles.keyboardAvoidingView}
-      keyboardVerticalOffser={Platform.OS === "ios" ? 0 : 20}
+      style={styles.keyboardAvoidingView}
+      keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 20}
     >
       <ScrollView
         contentContainerStyle={styles.scrollContainer}
         keyboardShouldPersistTaps="handled"
         showsVerticalScrollIndicator={false}
       >
-        <View styles={styles.container}>
+        <View style={styles.container}>
           <View style={styles.innerContainer}>{children}</View>
         </View>
       </ScrollView>
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
 
   scrollContainer: {
     flexGrow: 1,
-    justifyContent: "center",
+    //justifyContent: "center",
   },
 
   container: {

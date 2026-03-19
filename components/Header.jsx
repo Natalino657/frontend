@@ -9,8 +9,9 @@ import {
 import React, { useState, useCallback } from "react";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { Colors } from "../constants/Utils";
-import { useRouter, useLocalSearchParams, useNavigation } from "expo-router";
+
 import { useSelector } from "react-redux";
+import { useRouter, useLocalSearchParams } from "expo-router";
 
 const Header = () => {
   const [searchText, setSearchText] = useState("");
@@ -19,7 +20,6 @@ const Header = () => {
 
   const { cartItems } = useSelector((state) => state.cart);
 
-  const navigation = useNavigation();
   const router = useRouter();
   const { keyword = "" } = useLocalSearchParams();
 
@@ -56,7 +56,7 @@ const Header = () => {
           style={styles.logo}
         />
         <TouchableOpacity
-          onPress={() => navigation.navigate("(screens)/Cart")}
+          onPress={() => router.push("(screens)/Cart")}
           style={styles.cartIconContainer}
         >
           <Ionicons name="cart" size={35} color={Colors.primary} />

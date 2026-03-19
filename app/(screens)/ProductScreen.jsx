@@ -29,14 +29,15 @@ import ProductImageCard from "../../components/ProductImageCard";
 import ProductDetailsCard from "../../components/ProductDetailsCard";
 import ProductReviewSections from "../../components/ProductReviewSections";
 import AddReviewModal from "../../components/AddReviewModal";
+import { useRouter, useLocalSearchParams } from "expo-router";
 
 const ProductScreen = () => {
-  const route = useRoute();
+  const router = useRouter();
 
   const navigation = useNavigation();
   const dispatch = useDispatch();
 
-  const { productId } = route.params;
+  const { productId } = useLocalSearchParams();
 
   const [qty, setQty] = useState(1);
   const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
@@ -120,7 +121,7 @@ const ProductScreen = () => {
   const handleAddToCart = () => {
     if (product) {
       dispatch(addToCart({ ...product, qty }));
-      navigation.push("(screens)/Cart");
+      router.push("(screens)/Cart");
     } else {
       Toast.show({
         type: "error",

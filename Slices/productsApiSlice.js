@@ -1,7 +1,3 @@
-import {
-  createProduct,
-  updateProduct,
-} from "../../Backend/controllers/productController";
 import { PRODUCT_URL } from "../constants/Urls";
 import { apiSlice } from "./apiSlice";
 

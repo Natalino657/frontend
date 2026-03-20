@@ -34,8 +34,8 @@ const PaymentStatus = ({ order }) => {
       <View>
         {order.isDelivered && (
           <Message variant="success">
-            `Successfully delivered on $
-            {new Date(order.deliveredAt).toLocaleString()}`
+            Successfully delivered on{" "}
+            {new Date(order.deliveredAt).toLocaleString()}
           </Message>
         )}
       </View>
